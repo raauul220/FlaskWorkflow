@@ -14,4 +14,4 @@ COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 CMD [ "./entrypoint.sh" ]
 
-ENTRYPOINT [ "python3", "entry_point.py"]
+#ENTRYPOINT [ "python3", "entry_point.py"]
