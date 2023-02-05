@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+
+{% block content %}
+    
+   <h1 style="text-align: center;">Tabla de Información de los alumnos</h1>
+   <br>
+   <h3 style="text-align: center;">Inserción de alumnos</h3>
+    <form action="{{url_for('routes.insert_user')}}" method="POST" style="margin-left: 19%;">
+        <div class="row mb-2">
+            <div class="col">
+                <label>Nombre</label>
+                <input type="text" class="form-control mb-2" name="nombre">
+            </div>
+            <div class="col">
+                <label>Apellido</label>
+                <input type="text" class="form-control mb-2" name="apellido">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary mb-2 mt-3" type="submit">Insertar</button>
+            </div>
+        </div>
+
+    </form>
+    <h3 style="text-align: center;">Edición de alumnos</h3>
+    <form action="{{url_for('routes.edit_user')}}" method="POST" style="margin-left: 12%;">
+        <div class="row mb-2">
+            <div class="col">
+                <label>ID</label>
+                <input type="text" class="form-control mb-2" name="id">
+            </div>
+            <div class="col">
+                <label>Nombre</label>
+                <input type="text" class="form-control mb-2" name="nombre">
+            </div>
+            <div class="col">
+                <label>Apellido</label>
+                <input type="text" class="form-control mb-2" name="apellido">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary mb-2 mt-3" type="submit">Editar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+    <h3 style="text-align: center;">Visualización de alumnos</h3>
+    <div style="text-align: center; margin-left: 10%; margin-right: 10%;">
+        <table class="table table-bordered">
+            
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                </tr>
+           
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{alumno.id}}</td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellido}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <h3 style="text-align: right; margin-right: 12.5%;">Eliminar alumno</h3>
+    <form action="{{url_for('routes.del_user')}}" method="POST" style="text-align: right; margin-right: 10%;">
+        <div class="row mb-2">
+            <div class="col">
+                <label>ID</label>
+                <input type="number" name="id">
+                <button class="btn btn-primary" type="submit">Borrar</button>
+            </div>
+        </div>
+    </form>
+
+    <a href="{{ url_for('routes.notas') }}">Notas de los alumnos</a>
+{% endblock %}
