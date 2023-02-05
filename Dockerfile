@@ -9,7 +9,7 @@ RUN pip3 install gunicorn
 COPY . .
 
 EXPOSE 80
-WORKDIR /app/flskworkflow
+WORKDIR /app/flaskworkflow
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 CMD [ "./entrypoint.sh" ]
